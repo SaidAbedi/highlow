@@ -14,7 +14,7 @@ class Dealer extends Component {
         <div>
           <Transition timeout={400} in={inProp} appear>
             {state => (
-              <div className="dealerCardBox">
+              <div className="cardBorderBox">
                 <div id="me" className={`dealerCard  dealerCard-${state}`}>
                   <img src={image} alt="" />
                 </div>

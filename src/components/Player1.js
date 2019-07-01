@@ -8,7 +8,9 @@ class Player1 extends Component {
     return (
       <div>
         <h1>Player 1</h1>
-        <img src={image} alt="" />
+        <div className="cardBorderBox">
+          <img src={image} alt="" />
+        </div>
         <h4>Value: {value}</h4>
         <h3>Score: {score}</h3>
         <h3>Streak: {streak}</h3>

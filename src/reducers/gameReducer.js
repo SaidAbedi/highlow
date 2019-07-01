@@ -1,5 +1,6 @@
 const initState = {
   deckId: null,
+  inProgress: false,
   dealerCard: {
     value: "",
     image: "",
@@ -43,6 +44,7 @@ export default (state = initState, action) => {
           : parseInt(playerValue);
       return {
         ...state,
+        inProgress: true,
         dealerCard: {
           ...state.dealerCard,
           value: cardValue,
@@ -58,15 +60,20 @@ export default (state = initState, action) => {
     case "SHOW_DEALER_CARD":
       return {
         ...state,
+        inProgress: false,
         dealerCard: {
           ...state.dealerCard,
           inProp: true
+        },
+        player1Card: {
+          ...state.player1Card
         }
       };
     case "WON_HAND":
       return {
         ...state,
         player1Card: {
+          ...state.player1Card,
           score: state.player1Card.score + 1,
           streak: state.player1Card.streak + 1
         }

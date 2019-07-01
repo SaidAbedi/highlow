@@ -14,7 +14,7 @@ import {
 
 class Game extends Component {
   componentDidMount() {
-    console.log("mounted");
+    console.log(this.props);
     this.props.fetchNewDeck();
   }
 
@@ -41,15 +41,13 @@ class Game extends Component {
   handleWonHand() {
     this.props.wonHand();
     this.props.showModal();
-    this.props.fetchCards(this.props.gameId);
   }
   handleLostHand() {
     this.props.lostHand();
     this.props.showModal();
-    this.props.fetchCards(this.props.gameId);
   }
   handleDraw() {
-    this.props.fetchCards(this.props.gameId);
+    ///need to add draw to notification
   }
 
   render() {
@@ -59,12 +57,16 @@ class Game extends Component {
           dealerCard={this.props.dealerCard}
           showModal={this.props.showModal}
         />
-        <button
-          className="dealCardBtn"
-          onClick={() => this.props.fetchCards(this.props.gameId)}
-        >
-          DEAL CARDS
-        </button>
+
+        {!this.props.inProgress ? (
+          <button
+            className="dealCardBtn"
+            onClick={() => this.props.fetchCards(this.props.gameId)}
+          >
+            DEAL CARDS
+          </button>
+        ) : null}
+
         <div className="playersSection">
           <div className="player player1Position">
             <Player1 player1Card={this.props.player1Card} />
@@ -92,7 +94,7 @@ class Game extends Component {
               </button>
             </div>
           </div>
-          <div className="player">
+          <div className="player player2Position">
             <Player2 />
           </div>
         </div>
@@ -104,6 +106,7 @@ class Game extends Component {
 
 const mapStateToProps = state => {
   return {
+    inProgress: state.game.inProgress,
     gameId: state.game.deckId,
     dealerCard: state.game.dealerCard,
     player1Card: state.game.player1Card

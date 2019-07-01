@@ -1,3 +1,7 @@
+* {
+  color: rgb(40, 40, 40);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -17,7 +21,7 @@ code {
     monospace;
 }
 
-.dealerCardBox {
+.cardBorderBox {
   width: 230px;
   height: 315px;
   padding: 10px;
@@ -89,11 +93,14 @@ code {
   transform: rotate(20deg);
 }
 .player2Position {
-  width: 45%;
+  display: flex;
+  flex: wrap;
+  flex-direction: column;
   transform: rotate(-20deg);
 }
 
 .dealCardBtn {
+  position: absolute;
   padding: 20px 40px;
   width: 200px;
   border-radius: 20px;
