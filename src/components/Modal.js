@@ -4,18 +4,22 @@ import { connect } from "react-redux";
 import { closeModal } from "../actions/action";
 
 const ResultModal = props => {
+  const {
+    closeModal,
+    modal: { modalIsOpen }
+  } = props;
   return (
     <div>
-      <Modal isOpen={props.isOpen}>
+      <Modal isOpen={modalIsOpen} ariaHideApp={false}>
         <div>I am a modal</div>
-        <button onClick={() => this.props.closeModal()}>CLOSE</button>
+        <button onClick={() => closeModal()}>CLOSE</button>
       </Modal>
     </div>
   );
 };
 const mapStateToProps = state => {
   return {
-    modal: state.modal.isOpen
+    modal: state.modal
   };
 };
 

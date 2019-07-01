@@ -4,6 +4,7 @@ const initState = {
     value: "",
     image: "",
     score: 0,
+    inProp: false,
     visibility: "hidden"
   },
   player1Card: {
@@ -46,7 +47,7 @@ export default (state = initState, action) => {
           ...state.dealerCard,
           value: cardValue,
           image: action.payload[0].image,
-          visibility: "hidden"
+          inProp: false
         },
         player1Card: {
           ...state.player1Card,
@@ -59,7 +60,7 @@ export default (state = initState, action) => {
         ...state,
         dealerCard: {
           ...state.dealerCard,
-          visibility: "visible"
+          inProp: true
         }
       };
     case "WON_HAND":

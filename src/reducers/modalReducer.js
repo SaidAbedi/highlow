@@ -1,20 +1,17 @@
 const initState = {
-  isOpen: false
+  modalIsOpen: false
 };
 
 export default (state = initState, action) => {
   switch (action.type) {
     case "OPEN_MODAL":
-      console.log("OPENED");
       return {
-        ...state,
-        isOpen: true
+        modalIsOpen: false
       };
     case "CLOSE_MODAL":
       console.log("CLOSED");
       return {
-        ...state,
-        isOpen: false
+        modalIsOpen: false
       };
 
     default:

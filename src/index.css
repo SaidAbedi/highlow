@@ -5,9 +5,115 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url(./images/casino-table.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.dealerCardBox {
+  width: 230px;
+  height: 315px;
+  padding: 10px;
+  border: 5px dashed rgb(211, 211, 210);
+  border-radius: 4px;
+}
+.dealerCard {
+  position: relative;
+  background-color: transparent;
+  perspective: 1000px;
+  width: 230px;
+  height: auto;
+  opacity: 0;
+}
+
+.dealerCard-entered {
+  position: relative;
+  opacity: 1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dealerCard-entering {
+  opacity: 1;
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
+  animation-duration: 2s;
+}
+
+@keyframes revealCard {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.dealerStyle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.playersSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.player {
+  display: flex;
+  align-items: center;
+  width: 45%;
+  text-align: center;
+}
+.player1Position {
+  display: flex;
+  flex: wrap;
+  flex-direction: column;
+  /* flex-grow: 1; */
+  /* justify-content: flex-start; */
+  transform: rotate(20deg);
+}
+.player2Position {
+  width: 45%;
+  transform: rotate(-20deg);
+}
+
+.dealCardBtn {
+  padding: 20px 40px;
+  width: 200px;
+  border-radius: 20px;
+  background: #ffaf4b; /* Old browsers */
+  background: -moz-radial-gradient(
+    center,
+    ellipse cover,
+    #ffaf4b 0%,
+    #ff920a 100%
+  ); /* FF3.6-15 */
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    #ffaf4b 0%,
+    #ff920a 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(
+    ellipse at center,
+    #ffaf4b 0%,
+    #ff920a 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', endColorstr='#ff920a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
