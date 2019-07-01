@@ -4,8 +4,7 @@ import { Transition } from "react-transition-group";
 class Dealer extends Component {
   render() {
     const {
-      showModal,
-      dealerCard: { value, image, inProp }
+      dealerCard: { image, inProp }
     } = this.props;
 
     return (
@@ -22,10 +21,14 @@ class Dealer extends Component {
             )}
           </Transition>
         </div>
-        <h3>Value: {value}</h3>
       </div>
     );
   }
 }
 
 export default Dealer;
+
+// Close modal
+// Disable Player 1
+// Fetch newCards
+// Player 2 gets card

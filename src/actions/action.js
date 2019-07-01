@@ -27,3 +27,9 @@ export const closeModal = () => {
     type: "CLOSE_MODAL"
   };
 };
+
+export const addPlayer2 = () => {
+  return {
+    type: "ADD_PLAYER2"
+  };
+};

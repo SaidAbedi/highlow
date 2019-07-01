@@ -5,14 +5,22 @@ const initState = {
     value: "",
     image: "",
     score: 0,
-    inProp: false,
-    visibility: "hidden"
+    inProp: false
   },
+  currentPlayer: null,
   player1Card: {
+    active: true,
     value: "",
     image: "",
     score: 0,
-    streak: 0
+    streak: 5
+  },
+  player2Card: {
+    active: false,
+    value: "",
+    image: "",
+    score: 0,
+    streak: 8
   }
 };
 
@@ -33,6 +41,7 @@ export default (state = initState, action) => {
         value === "ACE"
           ? 10
           : parseInt(value);
+
       /// need to refactor
       let { value: playerValue } = action.payload[1];
       let playerCardValue =
@@ -42,6 +51,9 @@ export default (state = initState, action) => {
         playerValue === "ACE"
           ? 10
           : parseInt(playerValue);
+
+      let currentPlayer =
+        state.player2Card.active === false ? "player1Card" : "player2Card";
       return {
         ...state,
         inProgress: true,
@@ -51,8 +63,9 @@ export default (state = initState, action) => {
           image: action.payload[0].image,
           inProp: false
         },
-        player1Card: {
-          ...state.player1Card,
+        [currentPlayer]: {
+          ...state,
+          ...state[currentPlayer],
           value: playerCardValue,
           image: action.payload[1].image
         }
@@ -70,12 +83,14 @@ export default (state = initState, action) => {
         }
       };
     case "WON_HAND":
+      let current =
+        state.player2Card.active === false ? "player1Card" : "player2Card";
       return {
         ...state,
-        player1Card: {
-          ...state.player1Card,
-          score: state.player1Card.score + 1,
-          streak: state.player1Card.streak + 1
+        [current]: {
+          ...state[current],
+          score: state[current].score + 1,
+          streak: state[current].streak + 1
         }
       };
     case "LOST_HAND":
@@ -86,7 +101,26 @@ export default (state = initState, action) => {
           streak: 0
         }
       };
+    case "ADD_PLAYER2":
+      console.log("player2");
+
+      return {
+        ...state,
+        inProgress: false,
+        ...state.currentPlayer,
+        player1Card: {
+          active: false
+        },
+        player2Card: {
+          ...state.player2Card,
+          active: true
+        }
+      };
+    case "REMOVE_PLAYER2":
+      return {
+        ...state
+      };
     default:
-      return state;
+      return { ...state };
   }
 };

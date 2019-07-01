@@ -14,42 +14,50 @@ import {
 
 class Game extends Component {
   componentDidMount() {
-    console.log(this.props);
     this.props.fetchNewDeck();
   }
+  componentDidUpdate() {
+    if (this.props.player1Card.streak % 3 === 0 && this.props.inProgress) {
+      this.handleThreeInRoW();
+    }
+  }
 
-  handleHighChoice(dealerValue, player1Value) {
+  handleHighChoice(dealerValue, cardValue) {
     this.showDealerCard();
-    player1Value === dealerValue
+
+    cardValue === dealerValue
       ? this.handleDraw()
-      : player1Value < dealerValue
+      : cardValue < dealerValue
       ? this.handleWonHand()
       : this.handleLostHand();
   }
-  handleLowChoice(dealerValue, player1Value) {
+  handleLowChoice(dealerValue, cardValue) {
     this.showDealerCard();
-    player1Value === dealerValue
+
+    cardValue === dealerValue
       ? this.handleDraw()
-      : player1Value > dealerValue
+      : cardValue > dealerValue
       ? this.handleWonHand()
       : this.handleLostHand();
   }
   showDealerCard() {
     this.props.showDealerCard();
-    this.props.showModal();
+    // this.props.showModal();
   }
   handleWonHand() {
     this.props.wonHand();
-    this.props.showModal();
   }
   handleLostHand() {
     this.props.lostHand();
-    this.props.showModal();
+    // this.props.showModal();
   }
   handleDraw() {
     ///need to add draw to notification
   }
-
+  handleThreeInRoW() {
+    // this.showDealerCard();
+    this.props.showModal();
+  }
   render() {
     return (
       <div className="center">
@@ -95,10 +103,31 @@ class Game extends Component {
             </div>
           </div>
           <div className="player player2Position">
-            <Player2 />
+            <Player2 player2Card={this.props.player2Card} />
+            <button
+              onClick={() =>
+                this.handleLowChoice(
+                  this.props.dealerCard.value,
+                  this.props.player2Card.value
+                )
+              }
+            >
+              LOW
+            </button>
+            <button
+              onClick={() =>
+                this.handleHighChoice(
+                  this.props.dealerCard.value,
+                  this.props.player2Card.value
+                )
+              }
+            >
+              HIGH
+            </button>
           </div>
         </div>
         <ResultModal />
+        {/* {this.props.player1Card.streak % 3 === 0 ? <ResultModal /> : null} */}
       </div>
     );
   }
@@ -109,7 +138,8 @@ const mapStateToProps = state => {
     inProgress: state.game.inProgress,
     gameId: state.game.deckId,
     dealerCard: state.game.dealerCard,
-    player1Card: state.game.player1Card
+    player1Card: state.game.player1Card,
+    player2Card: state.game.player2Card
   };
 };
 
