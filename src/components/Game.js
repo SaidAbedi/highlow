@@ -9,15 +9,30 @@ import {
   wonHand,
   lostHand,
   showDealerCard,
-  showModal
+  showModal,
+  closeModal,
+  switchPlayer,
+  switchCounter
 } from "../actions/action";
 
 class Game extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSwitchPlayer = this.handleSwitchPlayer.bind(this);
+  }
   componentDidMount() {
-    this.props.fetchNewDeck();
+    this.currentPlayer = this.props.current.current.currentPlayer;
+    this.props.fetchNewDeck(this.currentPlayer);
   }
   componentDidUpdate() {
-    if (this.props.player1Card.streak % 3 === 0 && this.props.inProgress) {
+    this.currentPlayer = this.props.current.current.currentPlayer;
+  }
+  dealCards() {
+    this.checkThreeRow(this.currentPlayer);
+    this.props.fetchCards(this.props.gameId, this.currentPlayer);
+  }
+  checkThreeRow(arg) {
+    if (this.props[arg].streak !== 0 && this.props[arg].streak % 3 === 0) {
       this.handleThreeInRoW();
     }
   }
@@ -25,52 +40,56 @@ class Game extends Component {
   handleHighChoice(dealerValue, cardValue) {
     this.showDealerCard();
 
-    cardValue === dealerValue
-      ? this.handleDraw()
-      : cardValue < dealerValue
-      ? this.handleWonHand()
-      : this.handleLostHand();
+    if (cardValue === dealerValue) {
+      this.handleDraw();
+    } else if (cardValue < dealerValue) {
+      this.handleWonHand();
+    } else {
+      this.handleLostHand();
+    }
   }
   handleLowChoice(dealerValue, cardValue) {
     this.showDealerCard();
 
-    cardValue === dealerValue
-      ? this.handleDraw()
-      : cardValue > dealerValue
-      ? this.handleWonHand()
-      : this.handleLostHand();
+    if (cardValue === dealerValue) {
+      this.handleDraw();
+    } else if (cardValue > dealerValue) {
+      this.handleWonHand();
+    } else {
+      this.handleLostHand();
+    }
   }
+
   showDealerCard() {
     this.props.showDealerCard();
-    // this.props.showModal();
   }
   handleWonHand() {
     this.props.wonHand();
   }
   handleLostHand() {
     this.props.lostHand();
-    // this.props.showModal();
   }
+
+  handleSwitchPlayer(load) {
+    // load is obj current
+    this.props.switchPlayer(load);
+    this.props.switchCounter(load.current.currentPlayer);
+    this.props.closeModal();
+  }
+
   handleDraw() {
     ///need to add draw to notification
   }
   handleThreeInRoW() {
-    // this.showDealerCard();
     this.props.showModal();
   }
   render() {
     return (
       <div className="center">
-        <Dealer
-          dealerCard={this.props.dealerCard}
-          showModal={this.props.showModal}
-        />
+        <Dealer dealerCard={this.props.dealerCard} />
 
         {!this.props.inProgress ? (
-          <button
-            className="dealCardBtn"
-            onClick={() => this.props.fetchCards(this.props.gameId)}
-          >
+          <button className="dealCardBtn" onClick={() => this.dealCards()}>
             DEAL CARDS
           </button>
         ) : null}
@@ -78,7 +97,15 @@ class Game extends Component {
         <div className="playersSection">
           <div className="player player1Position">
             <Player1 player1Card={this.props.player1Card} />
-            <div>
+          </div>
+          <div className="player buttonSection">
+            <div
+              className={
+                this.props.inProgress
+                  ? "buttonSection__Visible"
+                  : "buttonSection__Hidden"
+              }
+            >
               {/* move buttons ot player componet */}
               <button
                 onClick={() =>
@@ -104,30 +131,12 @@ class Game extends Component {
           </div>
           <div className="player player2Position">
             <Player2 player2Card={this.props.player2Card} />
-            <button
-              onClick={() =>
-                this.handleLowChoice(
-                  this.props.dealerCard.value,
-                  this.props.player2Card.value
-                )
-              }
-            >
-              LOW
-            </button>
-            <button
-              onClick={() =>
-                this.handleHighChoice(
-                  this.props.dealerCard.value,
-                  this.props.player2Card.value
-                )
-              }
-            >
-              HIGH
-            </button>
           </div>
         </div>
-        <ResultModal />
-        {/* {this.props.player1Card.streak % 3 === 0 ? <ResultModal /> : null} */}
+        <ResultModal handleSwitchPlayer={this.handleSwitchPlayer} />
+        {/* {this.props.player1Card.streak % 3 === 0 ? (
+          <ResultModal handleSwitchPlayer={this.handleSwitchPlayer} />
+        ) : null} */}
       </div>
     );
   }
@@ -138,6 +147,8 @@ const mapStateToProps = state => {
     inProgress: state.game.inProgress,
     gameId: state.game.deckId,
     dealerCard: state.game.dealerCard,
+    current: state.players,
+
     player1Card: state.game.player1Card,
     player2Card: state.game.player2Card
   };
@@ -145,5 +156,15 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchCards, fetchNewDeck, wonHand, lostHand, showDealerCard, showModal }
+  {
+    fetchCards,
+    fetchNewDeck,
+    wonHand,
+    lostHand,
+    showDealerCard,
+    showModal,
+    closeModal,
+    switchPlayer,
+    switchCounter
+  }
 )(Game);

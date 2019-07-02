@@ -1,3 +1,5 @@
+///Default is player1
+
 const initState = {
   deckId: null,
   inProgress: false,
@@ -7,20 +9,17 @@ const initState = {
     score: 0,
     inProp: false
   },
-  currentPlayer: null,
   player1Card: {
-    active: true,
     value: "",
     image: "",
     score: 0,
-    streak: 5
+    streak: 0
   },
   player2Card: {
-    active: false,
     value: "",
     image: "",
     score: 0,
-    streak: 8
+    streak: 0
   }
 };
 
@@ -29,7 +28,31 @@ export default (state = initState, action) => {
     case "FETCH_NEW_DECK":
       return {
         ...state,
-        deckId: action.payload
+        deckId: action.payload,
+        dealerCard: {
+          value: action.payload[0].value,
+          image: action.payload[0].image
+        },
+        ...state.player1Card,
+        player1Card:
+          action.otherload === "player1Card"
+            ? {
+                ...state.player1Card,
+                value: action.payload[1].value,
+                image: action.payload[1].image,
+                inProp: false
+              }
+            : {},
+        ...state.player2Card,
+        player2Card:
+          action.otherload === "player2Card"
+            ? {
+                ...state.player2Card,
+                value: action.payload[1].value,
+                image: action.payload[1].image,
+                inProp: false
+              }
+            : {}
       };
 
     case "FETCH_CARDS":
@@ -52,8 +75,6 @@ export default (state = initState, action) => {
           ? 10
           : parseInt(playerValue);
 
-      let currentPlayer =
-        state.player2Card.active === false ? "player1Card" : "player2Card";
       return {
         ...state,
         inProgress: true,
@@ -63,12 +84,25 @@ export default (state = initState, action) => {
           image: action.payload[0].image,
           inProp: false
         },
-        [currentPlayer]: {
-          ...state,
-          ...state[currentPlayer],
-          value: playerCardValue,
-          image: action.payload[1].image
-        }
+        ...state.player1Card,
+        player1Card:
+          action.otherload === "player1Card"
+            ? {
+                ...state.player1Card,
+                value: playerCardValue,
+                image: action.payload[1].image,
+                inProp: false
+              }
+            : {},
+        ...state.player2Card,
+        player2Card:
+          action.otherload === "player2Card"
+            ? {
+                value: playerCardValue,
+                image: action.payload[1].image,
+                inProp: false
+              }
+            : {}
       };
     case "SHOW_DEALER_CARD":
       return {
@@ -80,17 +114,23 @@ export default (state = initState, action) => {
         },
         player1Card: {
           ...state.player1Card
+        },
+        player2Card: {
+          ...state.player2Card
         }
       };
     case "WON_HAND":
-      let current =
-        state.player2Card.active === false ? "player1Card" : "player2Card";
       return {
         ...state,
-        [current]: {
-          ...state[current],
-          score: state[current].score + 1,
-          streak: state[current].streak + 1
+        player1Card: {
+          ...state.player1Card,
+          score: state.player1Card.score + 1,
+          streak: state.player1Card.streak + 1
+        },
+        player2Card: {
+          ...state.player2Card,
+          score: state.player2Card.score + 1,
+          streak: state.player2Card.streak + 1
         }
       };
     case "LOST_HAND":
@@ -99,28 +139,35 @@ export default (state = initState, action) => {
         player1Card: {
           ...state.player1Card,
           streak: 0
-        }
-      };
-    case "ADD_PLAYER2":
-      console.log("player2");
-
-      return {
-        ...state,
-        inProgress: false,
-        ...state.currentPlayer,
-        player1Card: {
-          active: false
         },
         player2Card: {
           ...state.player2Card,
-          active: true
+          streak: 0
         }
       };
-    case "REMOVE_PLAYER2":
+    case "SWITCH_PLAYER":
       return {
-        ...state
+        ...state,
+        inProgress: false,
+        ...state.dealerCard,
+        player1Card:
+          action.otherload === "player1Card"
+            ? {
+                // ...state.player1Card,
+                value: playerCardValue,
+                image: action.payload[1].image
+              }
+            : {},
+        player2Card:
+          action.otherload === "player1Card"
+            ? {
+                // ...state.player2Card,
+                value: playerCardValue,
+                image: action.payload[1].image
+              }
+            : {}
       };
     default:
-      return { ...state };
+      return state;
   }
 };

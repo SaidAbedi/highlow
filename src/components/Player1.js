@@ -18,10 +18,5 @@ class Player1 extends Component {
     );
   }
 }
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     handleHighChoice: () => dispatch({ type: "HIGH_CHOICE" })
-//   };
-// };
 
 export default Player1;

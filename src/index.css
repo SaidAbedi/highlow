@@ -80,8 +80,9 @@ code {
 }
 .player {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  width: 45%;
+  width: 33%;
   text-align: center;
 }
 .player1Position {
@@ -139,4 +140,23 @@ code {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.buttonSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 1;
+}
+.buttonSection button {
+  padding: 20px 40px;
+  width: 120px;
+  margin: 10px;
+  border-radius: 20px;
+}
+.buttonSection__Hidden {
+  visibility: hidden;
+}
+.buttonSection__Visible {
+  visibility: visible;
 }

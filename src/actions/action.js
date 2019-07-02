@@ -28,8 +28,16 @@ export const closeModal = () => {
   };
 };
 
-export const addPlayer2 = () => {
+export const switchPlayer = payload1 => {
   return {
-    type: "ADD_PLAYER2"
+    type: "SWITCH_CURRENT_PLAYER",
+    payload: payload1
+  };
+};
+
+export const switchCounter = payload => {
+  return {
+    type: "SWITCH_PLAYER",
+    payload: payload
   };
 };
