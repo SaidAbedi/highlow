@@ -89,7 +89,7 @@ export default (state = initState, action) => {
           action.otherload === "player1Card"
             ? {
                 ...state.player1Card,
-                value: cardValue,
+                value: playerCardValue,
                 image: action.payload[1].image,
                 inProp: false
               }

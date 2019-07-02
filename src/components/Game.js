@@ -81,7 +81,7 @@ class Game extends Component {
   }
 
   handleDraw() {
-    alert("draw");
+    // alert("draw");
   }
   handleThreeInRoW() {
     this.props.showModal();
