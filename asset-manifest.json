@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/highlow/static/css/main.3fd59052.chunk.css",
+    "main.js": "/highlow/static/js/main.ab4ef498.chunk.js",
+    "main.js.map": "/highlow/static/js/main.ab4ef498.chunk.js.map",
+    "runtime~main.js": "/highlow/static/js/runtime~main.ebe819fc.js",
+    "runtime~main.js.map": "/highlow/static/js/runtime~main.ebe819fc.js.map",
+    "static/js/2.0a38cd51.chunk.js": "/highlow/static/js/2.0a38cd51.chunk.js",
+    "static/js/2.0a38cd51.chunk.js.map": "/highlow/static/js/2.0a38cd51.chunk.js.map",
+    "index.html": "/highlow/index.html",
+    "precache-manifest.f4cb63be8da3119b8f97b5effc93bd30.js": "/highlow/precache-manifest.f4cb63be8da3119b8f97b5effc93bd30.js",
+    "service-worker.js": "/highlow/service-worker.js",
+    "static/css/main.3fd59052.chunk.css.map": "/highlow/static/css/main.3fd59052.chunk.css.map",
+    "static/media/index.css": "/highlow/static/media/casino-table.4c598d86.png"
+  }
+}
