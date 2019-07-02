@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1d94428518b04d63034359818e066a0d",
+    "revision": "467319931382141155101f75917bf332",
     "url": "/cardgame/index.html"
   },
   {
-    "revision": "c27df67e3cc49995806f",
+    "revision": "cb739216294676d78bbd",
     "url": "/cardgame/static/css/main.2519bdf4.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cardgame/static/js/2.0a38cd51.chunk.js"
   },
   {
-    "revision": "c27df67e3cc49995806f",
-    "url": "/cardgame/static/js/main.ab4ef498.chunk.js"
+    "revision": "cb739216294676d78bbd",
+    "url": "/cardgame/static/js/main.7065e8fb.chunk.js"
   },
   {
     "revision": "2eafe4ea7a2e50c1b560",
