@@ -98,6 +98,7 @@ export default (state = initState, action) => {
         player2Card:
           action.otherload === "player2Card"
             ? {
+                ...state.player2Card,
                 value: playerCardValue,
                 image: action.payload[1].image,
                 inProp: false
@@ -122,11 +123,13 @@ export default (state = initState, action) => {
     case "WON_HAND":
       return {
         ...state,
+        ...state.player1Card,
         player1Card: {
           ...state.player1Card,
           score: state.player1Card.score + 1,
           streak: state.player1Card.streak + 1
         },
+        ...state.player2Card,
         player2Card: {
           ...state.player2Card,
           score: state.player2Card.score + 1,
@@ -136,10 +139,12 @@ export default (state = initState, action) => {
     case "LOST_HAND":
       return {
         ...state,
+        ...state.player1Card,
         player1Card: {
           ...state.player1Card,
           streak: 0
         },
+        ...state.player2Card,
         player2Card: {
           ...state.player2Card,
           streak: 0

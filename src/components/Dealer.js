@@ -27,8 +27,3 @@ class Dealer extends Component {
 }
 
 export default Dealer;
-
-// Close modal
-// Disable Player 1
-// Fetch newCards
-// Player 2 gets card

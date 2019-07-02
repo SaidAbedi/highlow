@@ -14,13 +14,20 @@ const ResultModal = props => {
     <div>
       <Modal className="modal" isOpen={modalIsOpen} ariaHideApp={false}>
         <div>
-          <h2>THREE-IN-A-ROW!</h2>
-          <h4>SWITCH TO PLAYER</h4>
-          <button onClick={() => handleSwitchPlayer(props.current)}>
+          <h1>THREE-IN-A-ROW!</h1>
+          <h2>SWITCH TO ANOTHER PLAYER</h2>
+          <button
+            className="button button__switchPlayer"
+            onClick={() => handleSwitchPlayer(props.current)}
+          >
             SWITCH
           </button>
-          <p>No, continue as current player</p>
-          <button onClick={() => closeModal()}>CLOSE</button>
+
+          {/* <button className="button" onClick={() => closeModal()}> */}
+          <span className="cancel__switch" onClick={() => closeModal()}>
+            <p>No, continue as current player</p>
+          </span>
+          {/* </button> */}
         </div>
       </Modal>
     </div>
