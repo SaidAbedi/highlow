@@ -89,7 +89,7 @@ export default (state = initState, action) => {
           action.otherload === "player1Card"
             ? {
                 ...state.player1Card,
-                value: playerCardValue,
+                value: cardValue,
                 image: action.payload[1].image,
                 inProp: false
               }
@@ -158,7 +158,6 @@ export default (state = initState, action) => {
         player1Card:
           action.otherload === "player1Card"
             ? {
-                // ...state.player1Card,
                 value: playerCardValue,
                 image: action.payload[1].image
               }
@@ -166,7 +165,6 @@ export default (state = initState, action) => {
         player2Card:
           action.otherload === "player1Card"
             ? {
-                // ...state.player2Card,
                 value: playerCardValue,
                 image: action.payload[1].image
               }
