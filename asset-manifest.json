@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/cardgame/static/css/main.2519bdf4.chunk.css",
-    "main.js": "/cardgame/static/js/main.7065e8fb.chunk.js",
-    "main.js.map": "/cardgame/static/js/main.7065e8fb.chunk.js.map",
-    "runtime~main.js": "/cardgame/static/js/runtime~main.54724c1b.js",
-    "runtime~main.js.map": "/cardgame/static/js/runtime~main.54724c1b.js.map",
-    "static/js/2.0a38cd51.chunk.js": "/cardgame/static/js/2.0a38cd51.chunk.js",
-    "static/js/2.0a38cd51.chunk.js.map": "/cardgame/static/js/2.0a38cd51.chunk.js.map",
-    "index.html": "/cardgame/index.html",
-    "precache-manifest.8cea5cf55bde89d17f69e28ed81c8e97.js": "/cardgame/precache-manifest.8cea5cf55bde89d17f69e28ed81c8e97.js",
-    "service-worker.js": "/cardgame/service-worker.js",
-    "static/css/main.2519bdf4.chunk.css.map": "/cardgame/static/css/main.2519bdf4.chunk.css.map",
-    "static/media/index.css": "/cardgame/static/media/casino-table.4c598d86.png"
+    "main.css": "/highlow/static/css/main.3fd59052.chunk.css",
+    "main.js": "/highlow/static/js/main.7065e8fb.chunk.js",
+    "main.js.map": "/highlow/static/js/main.7065e8fb.chunk.js.map",
+    "runtime~main.js": "/highlow/static/js/runtime~main.ebe819fc.js",
+    "runtime~main.js.map": "/highlow/static/js/runtime~main.ebe819fc.js.map",
+    "static/js/2.0a38cd51.chunk.js": "/highlow/static/js/2.0a38cd51.chunk.js",
+    "static/js/2.0a38cd51.chunk.js.map": "/highlow/static/js/2.0a38cd51.chunk.js.map",
+    "index.html": "/highlow/index.html",
+    "precache-manifest.e954f416cb7595e39b47ece080e017cc.js": "/highlow/precache-manifest.e954f416cb7595e39b47ece080e017cc.js",
+    "service-worker.js": "/highlow/service-worker.js",
+    "static/css/main.3fd59052.chunk.css.map": "/highlow/static/css/main.3fd59052.chunk.css.map",
+    "static/media/index.css": "/highlow/static/media/casino-table.4c598d86.png"
   }
 }
