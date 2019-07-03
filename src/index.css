@@ -102,8 +102,6 @@ code {
   display: flex;
   flex: wrap;
   flex-direction: column;
-  /* flex-grow: 1; */
-  /* justify-content: flex-start; */
   transform: rotate(20deg);
 }
 .player2Position {

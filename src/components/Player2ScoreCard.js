@@ -2,6 +2,7 @@ import React from "react";
 
 const Player2ScoreCard = props => {
   const { score, streak, value } = props.player2Card;
+  console.log(streak, score);
 
   const scoreCard = value ? (
     <div>

@@ -30,6 +30,7 @@ class Game extends Component {
     this.currentPlayer = this.props.current.current.currentPlayer;
   }
   dealCards() {
+    this.currentPlayer = this.props.current.current.currentPlayer;
     this.checkThreeRow(this.currentPlayer);
     this.props.fetchCards(this.props.gameId, this.currentPlayer);
   }
@@ -88,6 +89,7 @@ class Game extends Component {
   }
 
   render() {
+    let { currentPlayer } = this.props.current.current;
     return (
       <div className="center">
         <div className="topDisplay">
@@ -119,7 +121,7 @@ class Game extends Component {
                 onClick={() =>
                   this.handleLowChoice(
                     this.props.dealerCard.value,
-                    this.props.player1Card.value
+                    this.props[currentPlayer].value
                   )
                 }
               >
@@ -130,7 +132,8 @@ class Game extends Component {
                 onClick={() =>
                   this.handleHighChoice(
                     this.props.dealerCard.value,
-                    this.props.player1Card.value
+                    this.props[currentPlayer].value
+                    /* this.props.player1Card.value */
                   )
                 }
               >

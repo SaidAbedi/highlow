@@ -22,12 +22,9 @@ const ResultModal = props => {
           >
             SWITCH
           </button>
-
-          {/* <button className="button" onClick={() => closeModal()}> */}
           <span className="cancel__switch" onClick={() => closeModal()}>
             <p>No, continue as current player</p>
           </span>
-          {/* </button> */}
         </div>
       </Modal>
     </div>

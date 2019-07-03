@@ -39,8 +39,8 @@ export default (state = initState, action) => {
             ? {
                 ...state.player1Card,
                 value: action.payload[1].value,
-                image: action.payload[1].image,
-                inProp: false
+                image: action.payload[1].image
+                // inProp: false
               }
             : {},
         ...state.player2Card,
@@ -49,8 +49,8 @@ export default (state = initState, action) => {
             ? {
                 ...state.player2Card,
                 value: action.payload[1].value,
-                image: action.payload[1].image,
-                inProp: false
+                image: action.payload[1].image
+                // inProp: false
               }
             : {}
       };
@@ -90,8 +90,7 @@ export default (state = initState, action) => {
             ? {
                 ...state.player1Card,
                 value: playerCardValue,
-                image: action.payload[1].image,
-                inProp: false
+                image: action.payload[1].image
               }
             : {},
         ...state.player2Card,
@@ -100,8 +99,7 @@ export default (state = initState, action) => {
             ? {
                 ...state.player2Card,
                 value: playerCardValue,
-                image: action.payload[1].image,
-                inProp: false
+                image: action.payload[1].image
               }
             : {}
       };
@@ -113,9 +111,11 @@ export default (state = initState, action) => {
           ...state.dealerCard,
           inProp: true
         },
+        ...state.player1Card,
         player1Card: {
           ...state.player1Card
         },
+        ...state.player2Card,
         player2Card: {
           ...state.player2Card
         }
@@ -155,6 +155,7 @@ export default (state = initState, action) => {
         ...state,
         inProgress: false,
         ...state.dealerCard,
+        ...state.player1Card,
         player1Card:
           action.otherload === "player1Card"
             ? {
@@ -162,9 +163,11 @@ export default (state = initState, action) => {
                 image: action.payload[1].image
               }
             : {},
+        ...state.player2Card,
         player2Card:
-          action.otherload === "player1Card"
+          action.otherload === "player2Card"
             ? {
+                ...state.player2Card,
                 value: playerCardValue,
                 image: action.payload[1].image
               }
