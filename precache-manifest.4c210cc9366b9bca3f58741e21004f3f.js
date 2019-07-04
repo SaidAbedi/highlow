@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "893d11fd5b10ce283de31abc7617f0cf",
+    "revision": "14bfc644c6b0ff9294c22831e378619e",
     "url": "/highlow/index.html"
   },
   {
-    "revision": "f300d01e5631bc50eebf",
-    "url": "/highlow/static/css/main.7ea55ff4.chunk.css"
+    "revision": "99a57046f4cfa9383056",
+    "url": "/highlow/static/css/main.f43ff7bf.chunk.css"
   },
   {
     "revision": "7e7a274721e8c57a668b",
     "url": "/highlow/static/js/2.0a38cd51.chunk.js"
   },
   {
-    "revision": "f300d01e5631bc50eebf",
-    "url": "/highlow/static/js/main.16fd0920.chunk.js"
+    "revision": "99a57046f4cfa9383056",
+    "url": "/highlow/static/js/main.1c749a36.chunk.js"
   },
   {
     "revision": "97ae6af46518daab4265",
