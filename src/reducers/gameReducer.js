@@ -12,13 +12,13 @@ const initState = {
     value: "",
     image: "",
     score: 0,
-    streak: 2
+    streak: 0
   },
   player2Card: {
     value: "",
     image: "",
     score: 0,
-    streak: 2
+    streak: 0
   }
 };
 
