@@ -1,5 +1,4 @@
 ///Default is player1
-
 const initState = {
   deckId: null,
   inProgress: false,
@@ -13,19 +12,20 @@ const initState = {
     value: "",
     image: "",
     score: 0,
-    streak: 0
+    streak: 2
   },
   player2Card: {
     value: "",
     image: "",
     score: 0,
-    streak: 0
+    streak: 2
   }
 };
 
 export default (state = initState, action) => {
   switch (action.type) {
     case "FETCH_NEW_DECK":
+      console.log("fetched new deck");
       return {
         ...state,
         deckId: action.payload,
@@ -33,29 +33,28 @@ export default (state = initState, action) => {
           value: action.payload[0].value,
           image: action.payload[0].image
         },
-        ...state.player1Card,
+
         player1Card:
           action.otherload === "player1Card"
             ? {
                 ...state.player1Card,
                 value: action.payload[1].value,
                 image: action.payload[1].image
-                // inProp: false
               }
-            : {},
-        ...state.player2Card,
+            : { ...initState.player1Card },
+
         player2Card:
           action.otherload === "player2Card"
             ? {
                 ...state.player2Card,
                 value: action.payload[1].value,
                 image: action.payload[1].image
-                // inProp: false
               }
-            : {}
+            : { ...initState.player2Card }
       };
 
     case "FETCH_CARDS":
+      console.log("FETCH_CARDS");
       let { value } = action.payload[0];
       let cardValue =
         value === "JACK" ||
@@ -84,7 +83,7 @@ export default (state = initState, action) => {
           image: action.payload[0].image,
           inProp: false
         },
-        ...state.player1Card,
+
         player1Card:
           action.otherload === "player1Card"
             ? {
@@ -93,7 +92,7 @@ export default (state = initState, action) => {
                 image: action.payload[1].image
               }
             : {},
-        ...state.player2Card,
+
         player2Card:
           action.otherload === "player2Card"
             ? {
@@ -155,7 +154,6 @@ export default (state = initState, action) => {
         ...state,
         inProgress: false,
         ...state.dealerCard,
-        ...state.player1Card,
         player1Card:
           action.otherload === "player1Card"
             ? {
@@ -163,11 +161,10 @@ export default (state = initState, action) => {
                 image: action.payload[1].image
               }
             : {},
-        ...state.player2Card,
+
         player2Card:
           action.otherload === "player2Card"
             ? {
-                ...state.player2Card,
                 value: playerCardValue,
                 image: action.payload[1].image
               }

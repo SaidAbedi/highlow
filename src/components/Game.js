@@ -75,10 +75,10 @@ class Game extends Component {
   }
 
   handleSwitchPlayer(load) {
-    // load is obj current
     this.props.switchPlayer(load);
     this.props.switchCounter(load.current.currentPlayer);
     this.props.closeModal();
+    this.props.fetchNewDeck(this.currentPlayer);
   }
 
   handleDraw() {

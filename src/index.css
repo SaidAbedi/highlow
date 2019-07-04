@@ -112,7 +112,6 @@ code {
 }
 
 .dealCardBtn {
-  position: absolute;
   padding: 20px 40px;
   width: 200px;
   color: rgb(225, 225, 225);
@@ -208,4 +207,34 @@ p {
 }
 .buttonSection__Visible {
   visibility: visible;
+}
+
+/* On screens that are 992px or less, set the following: */
+@media screen and (max-width: 992px) {
+}
+
+/* On screens that are 600px or less, set the follow */
+@media screen and (max-width: 700px) {
+  body {
+    background: #4f6c75;
+    background-repeat: repeat;
+  }
+
+  .playersSection {
+    flex-direction: column;
+  }
+  .player1Position {
+    width: 100%;
+    transform: rotate(0deg);
+  }
+  .player2Position {
+    width: 100%;
+    transform: rotate(-0deg);
+  }
+  .buttonSection {
+    width: 100%;
+    justify-content: center;
+  }
+
+  flex-direction: column-reverse;
 }
