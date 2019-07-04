@@ -25,7 +25,6 @@ const initState = {
 export default (state = initState, action) => {
   switch (action.type) {
     case "FETCH_NEW_DECK":
-      console.log("fetched new deck");
       return {
         ...state,
         deckId: action.payload,
@@ -54,7 +53,6 @@ export default (state = initState, action) => {
       };
 
     case "FETCH_CARDS":
-      console.log("FETCH_CARDS");
       let { value } = action.payload[0];
       let cardValue =
         value === "JACK" ||

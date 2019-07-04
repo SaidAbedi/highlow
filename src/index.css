@@ -112,6 +112,7 @@ code {
 }
 
 .dealCardBtn {
+  position: absolute;
   padding: 20px 40px;
   width: 200px;
   color: rgb(225, 225, 225);
@@ -219,6 +220,9 @@ p {
     background: #4f6c75;
     background-repeat: repeat;
   }
+  .dealCardBtn {
+    position: relative;
+  }
 
   .playersSection {
     flex-direction: column;
@@ -235,6 +239,21 @@ p {
     width: 100%;
     justify-content: center;
   }
+  .mobile_display_hidden {
+    display: none;
+  }
+  /* flex-direction: column-reverse; */
+}
 
-  flex-direction: column-reverse;
+@media screen and (max-width: 500px) {
+  .cardBorderBox,
+  .cardBorderBox__active {
+    height: 200px;
+    width: 140px;
+  }
+  .cardBorderBox img,
+  .cardBorderBox__active img {
+    height: 200px;
+    width: 140px;
+  }
 }

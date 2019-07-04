@@ -106,7 +106,10 @@ class Game extends Component {
 
         <div className="playersSection">
           <div className="player player1Position">
-            <Player1 player1Card={this.props.player1Card} />
+            <Player1
+              player1Card={this.props.player1Card}
+              currentPlayer={currentPlayer}
+            />
           </div>
           <div className="player buttonSection">
             <div
@@ -142,7 +145,10 @@ class Game extends Component {
             </div>
           </div>
           <div className="player player2Position">
-            <Player2 player2Card={this.props.player2Card} />
+            <Player2
+              player2Card={this.props.player2Card}
+              currentPlayer={currentPlayer}
+            />
           </div>
         </div>
         <ResultModal handleSwitchPlayer={this.handleSwitchPlayer} />
