@@ -246,6 +246,12 @@ p {
 }
 
 @media screen and (max-width: 500px) {
+  .dealerCard {
+    width: 200px;
+  }
+  .dealerCard-entered {
+    box-shadow: none;
+  }
   .cardBorderBox,
   .cardBorderBox__active {
     height: 200px;
@@ -255,5 +261,12 @@ p {
   .cardBorderBox__active img {
     height: 200px;
     width: 140px;
+  }
+  .playerScoreBoard {
+    display: none;
+  }
+  .modal {
+    width: 75%;
+    height: 60%;
   }
 }

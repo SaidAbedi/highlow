@@ -11,7 +11,7 @@ const Player2ScoreCard = props => {
   ) : null;
 
   return (
-    <div>
+    <div className="playerScoreBoard">
       <h1>Player 2</h1>
       {scoreCard}
     </div>
